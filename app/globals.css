@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fff8f2;
+  --surface: #ffffff;
+  --foreground: #1a1033;
+  --muted: #6b5b7b;
+  --subtle: #9b8ab0;
+  --border: #f0e4f8;
+  --border-light: #faf0ff;
+  --primary: #ff5e3a;
+  --primary-hover: #e84d2a;
+  --secondary: #8b5cf6;
+  --secondary-hover: #7c3aed;
+  --accent-pink: #f472b6;
+  --accent-yellow: #fbbf24;
+  --accent-mint: #34d399;
+  --gradient-hero: linear-gradient(135deg, #fff8f2 0%, #fdf2ff 50%, #fff7ed 100%);
+  --gradient-cta: linear-gradient(135deg, #ff5e3a 0%, #f472b6 100%);
+  --gradient-footer: linear-gradient(180deg, #2d1b4e 0%, #1a1033 100%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-border: var(--border);
+  --color-border-light: var(--border-light);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-accent-pink: var(--accent-pink);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-mint: var(--accent-mint);
+  --color-accent: var(--primary);
+  --color-accent-hover: var(--primary-hover);
+  --font-sans: var(--font-plus-jakarta);
+  --font-display: var(--font-fraunces), serif;
+  --font-script: var(--font-caveat), cursive;
+}
+
+.font-display {
+  font-family: var(--font-fraunces), serif;
+}
+
+.font-script {
+  font-family: var(--font-caveat), cursive;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--secondary);
+  color: #ffffff;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes marquee-banner {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.35s ease-out;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee 8s linear infinite;
+}
+
+.animate-marquee-banner {
+  animation: marquee-banner 15s linear infinite;
+}
+
+.bg-hero-gradient {
+  background: var(--gradient-hero);
+}
+
+.bg-cta-gradient {
+  background: var(--gradient-cta);
+}
+
+.bg-footer-gradient {
+  background: var(--gradient-footer);
+}
+
+@keyframes marquee-banner-rtl {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-marquee-banner-rtl {
+  animation: marquee-banner-rtl 15s linear infinite;
+}

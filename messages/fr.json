@@ -1,0 +1,403 @@
+{
+  "Header": {
+    "howItWorks": "Comment ça marche",
+    "forWhom": "Pour qui",
+    "included": "Ce qui est inclus",
+    "faq": "FAQ",
+    "trackOrder": "Suivre ma commande",
+    "createSong": "Créer ma chanson"
+  },
+  "PromoBanner": {
+    "text": "🎁 OFFRE DE LANCEMENT — −30% sur votre première chanson !"
+  },
+  "Footer": {
+    "description": "Des chansons personnalisées uniques, écrites pour votre histoire.",
+    "contact": "Contact",
+    "terms": "Conditions d'utilisation",
+    "sales": "Conditions de vente",
+    "refunds": "Politique de remboursement",
+    "rights": "Tous droits réservés."
+  },
+  "Hero": {
+    "badge": "La plateforme n°1 — +2500 chansons personnalisées écrites",
+    "clickToWatch": "Cliquez pour regarder la vidéo",
+    "title1": "« J'ai cliqué sur play,",
+    "title2": "et nous avons tous les deux ",
+    "titleHighlight": "pleuré",
+    "title3": " de joie »",
+    "description": "Surprenez vos proches avec une chanson unique et personnalisée qu'ils n'oublieront jamais.",
+    "createSong": "Créer ma chanson",
+    "guarantee": "Satisfait ou remboursé · Livré directement par e-mail"
+  },
+  "WhatsIncluded": {
+    "title": "Ce qui est inclus dans votre chanson",
+    "subtitle": "Dès que votre chanson est prête, nous vous envoyons un lien privé par e-mail — simple et rapide.",
+    "feature1": "Enregistrement en studio professionnel",
+    "desc1": "Une production haut de gamme, prête à être partagée fièrement avec vos proches.",
+    "feature2": "Paroles sur mesure",
+    "desc2": "Chaque mot s'inspire de vos histoires, anecdotes et souvenirs — pas de modèle pré-écrit.",
+    "feature3": "Prête rapidement",
+    "desc3": "Le délai idéal pour préparer sereinement votre anniversaire, mariage ou surprise.",
+    "standardTitle": "Formule Standard",
+    "standardSubtitle": "Le cadeau parfait, sans se presser",
+    "currency": "dhs",
+    "standardItem1": "Rendu sous 5 jours",
+    "standardItem2": "Paroles 100% sur mesure",
+    "standardItem3": "Enregistrement studio pro",
+    "standardItem4": "Format MP3 haute qualité",
+    "standardBtn": "Choisir Standard",
+    "popular": "Populaire",
+    "expressTitle": "Formule Express",
+    "expressSubtitle": "Pour les occasions de dernière minute",
+    "expressItem1": "Rendu rapide sous 48h",
+    "expressItem2": "Paroles 100% sur mesure",
+    "expressItem3": "Enregistrement studio pro",
+    "expressItem4": "Format MP3 haute qualité",
+    "expressItem5": "Écriture prioritaire",
+    "expressBtn": "Choisir Express"
+  },
+  "GiftCategories": {
+    "sectionTitle": "Offrez une chanson à un être cher... ou même à vous-même !",
+    "sectionSubtitle": "Quelle que soit l'occasion, nous transformons vos sentiments en musique.",
+    "cat1Title": "Votre partenaire de vie",
+    "cat1Desc": "Anniversaire, Saint-Valentin, fiançailles...",
+    "cat2Title": "Vos enfants",
+    "cat2Desc": "Naissance, diplôme, anniversaire...",
+    "cat3Title": "En souvenir",
+    "cat3Desc": "Gardez vivant le souvenir de ceux qui vous sont chers.",
+    "cat4Title": "Vos parents",
+    "cat4Desc": "Honorez-les comme ils vous ont élevé et tout donné.",
+    "cat5Title": "À vous-même",
+    "cat5Desc": "Parfois, le meilleur cadeau est celui qu'on s'offre à soi-même.",
+    "cat6Title": "Votre ami(e)",
+    "cat6Desc": "Célébrez une amitié rare et sincère.",
+    "cat7Title": "Pour encourager",
+    "cat7Desc": "Soutenez un proche dans les moments difficiles.",
+    "cat8Title": "Pour guérir",
+    "cat8Desc": "La musique soigne les cœurs et apporte du réconfort.",
+    "createSong": "Créer ma chanson"
+  },
+  "HowItWorks": {
+    "sectionTitle": "Comment ça marche (très simple 1-2-3)",
+    "sectionSubtitle": "3 étapes simples, sans stress, pour un bonheur inoubliable.",
+    "step1Title": "Racontez-nous votre histoire",
+    "step1Desc": "Répondez à quelques questions : pour qui, quel style musical, et vos plus beaux souvenirs ensemble.",
+    "step2Title": "Écriture et enregistrement",
+    "step2Desc": "Un auteur écrit les paroles personnalisées, et nos musiciens l'enregistrent en studio. La magie opère !",
+    "step3Title": "Recevez votre chanson",
+    "step3Desc": "Nous vous envoyons un lien privé par e-mail. Écoutez, partagez et préparez les mouchoirs de joie."
+  },
+  "Faq": {
+    "sectionTitle": "Questions Fréquentes (FAQ)",
+    "sectionSubtitle": "Tout ce que vous devez savoir avant de commencer.",
+    "q1": "Qu'est-ce qui rend cette chanson unique ?",
+    "a1": "Chaque chanson est écrite à partir de zéro avec vos propres mots et souvenirs. Pas de modèle pré-écrit — une création unique qui capture votre relation en musique.",
+    "q2": "Combien de temps faut-il pour recevoir ma chanson ?",
+    "a2": "Le délai standard est de 7 jours. Pressé ? Des options express en 3 jours ou 24 heures sont disponibles lors de la finalisation.",
+    "q3": "Pour quelle occasion puis-je l'offrir ?",
+    "a3": "Anniversaires, mariages, naissances, diplômes, commémorations, Saint-Valentin, ou simplement pour dire « je pense à toi ».",
+    "q4": "Comment la chanson est-elle créée ?",
+    "a4": "Nos auteurs étudient vos réponses et écrivent des paroles inédites. Nos musiciens les enregistrent ensuite en studio sous le contrôle attentif de notre équipe de production.",
+    "q5": "Comment vais-je recevoir ma chanson ?",
+    "a5": "Nous vous envoyons un lien unique par e-mail. Vous pourrez l'écouter et la télécharger depuis n'importe quel téléphone ou ordinateur, sans avoir à installer d'application.",
+    "q6": "Puis-je la diffuser lors d'un événement ?",
+    "a6": "Absolument ! Anniversaire, mariage, fête de famille, surprise... C'est votre musique, partagez-la comme vous le souhaitez.",
+    "moreQuestions": "Vous avez d'autres questions ? Envoyez-nous un e-mail à"
+  },
+  "SocialProof": {
+    "b1": "Prête en 7 jours",
+    "b2": "Sans frais de port (par e-mail)",
+    "b3": "Anniversaires · Mariages · Souvenirs",
+    "b4": "Juste pour faire plaisir"
+  },
+  "Testimonials": {
+    "sectionTitle": "Pourquoi plus de 2500 clients adorent Mosiqti",
+    "t1q": "Ma femme a pleuré de joie dès la première note. C'était le plus beau cadeau pour notre anniversaire.",
+    "t1a": "Yassine, 34 ans",
+    "t1o": "Anniversaire de couple",
+    "t2q": "J'ai offert cette chanson à ma mère pour ses 60 ans. Elle l'écoute encore tous les matins.",
+    "t2a": "Leila, 28 ans",
+    "t2o": "Fête des Mères",
+    "t3q": "Nous l'avons jouée pour l'anniversaire de mon père. Toute la famille a été profondément émue aux larmes.",
+    "t3a": "Tarik, 41 ans",
+    "t3o": "Anniversaire de mariage / Souvenir",
+    "t4q": "Mon fils de 8 ans était tellement heureux d'entendre son prénom dans sa propre chanson !",
+    "t4a": "Amina, 36 ans",
+    "t4o": "Anniversaire de mon fils"
+  },
+  "AudioExamples": {
+    "sectionTitle": "Écoutez nos créations",
+    "sectionSubtitle": "Découvrez la diversité de nos styles musicaux à travers ces extraits.",
+    "notSupported": "Votre navigateur ne supporte pas l'élément audio.",
+    "t1Style": "Romantique / Duo",
+    "t1Desc": "Une belle chanson romantique pour célébrer l'amour d'un couple.",
+    "t2Style": "Traditionnel / Lotar",
+    "t2Desc": "Des sonorités nostalgiques et traditionnelles avec le célèbre Lotar.",
+    "t3Style": "Arabe / Émotionnel",
+    "t3Desc": "Une voix douce et touchante, parfaite pour célébrer une maman.",
+    "t4Style": "Acoustique / Doux",
+    "t4Desc": "Une mélodie acoustique douce pour remémorer de beaux souvenirs.",
+    "t5Style": "Folklorique Marocain",
+    "t5Desc": "Une ode aux racines avec une authentique touche marocaine.",
+    "t6Style": "Célébration",
+    "t6Desc": "Une chanson de célébration parfaite pour les fêtes et cérémonies."
+  },
+  "FinalCTA": {
+    "title": "Prêt à créer un souvenir qui durera toujours ?",
+    "subtitle1": "Prenez quelques minutes pour nous raconter votre histoire.",
+    "subtitle2": "Votre chanson, elle, restera pour toujours.",
+    "btn": "Créer ma chanson — à partir de 190 dhs"
+  },
+  "Quiz": {
+    "options": {
+      "recipient": {
+        "husband": "Mon mari",
+        "wife": "Ma femme",
+        "children": "Mon enfant",
+        "father": "Mon père",
+        "mother": "Ma mère",
+        "sibling": "Mon frère / Ma sœur",
+        "friend": "Mon ami(e)",
+        "myself": "Moi-même",
+        "other": "Autre"
+      },
+      "genre": {
+        "chaabi": "Chaâbi",
+        "rai": "Raï",
+        "rap": "Rap / Hip-Hop Marocain",
+        "pop": "Pop Marocaine",
+        "gnawa": "Gnawa",
+        "amazigh": "Musique Amazighe",
+        "tarab": "Classique Oriental / Tarab",
+        "other": "Autre (préciser)"
+      },
+      "voice": {
+        "female": "Voix féminine",
+        "male": "Voix masculine",
+        "noPreference": "Sans préférence"
+      },
+      "language": {
+        "darija": "Darija (Arabe Marocain)",
+        "tamazight": "Tamazight (Amazigh)",
+        "tarifit": "Tarifit (Rifain)",
+        "tachelhit": "Tachelhit (Chleuh)",
+        "hassaniya": "Hassaniya",
+        "arabeClassique": "Arabe Classique",
+        "french": "Français",
+        "english": "Anglais",
+        "spanish": "Espagnol"
+      },
+      "offer": {
+        "standard": "Formule Standard (190 dhs — Rendu en 5 jours)",
+        "express": "Formule Express (290 dhs — Rendu en 48h)"
+      }
+    },
+    "pages": {
+      "basics": {
+        "title": "Commençons par les bases",
+        "subtitle": "Parlez-nous de cette personne si chère dans votre vie",
+        "fields": {
+          "recipient": {
+            "label": "À qui est destinée cette chanson ?"
+          },
+          "name": {
+            "label": "Quel est son prénom ?",
+            "placeholder": "Écrivez son prénom ici",
+            "hint": "Conseil : si le prénom a une prononciation particulière, écrivez-le phonétiquement pour aider nos chanteurs (ex: Alicia ➔ A-li-cia)"
+          }
+        }
+      },
+      "genre": {
+        "title": "Choisissez le style musical",
+        "fields": {
+          "preferredGenre": {
+            "label": "Genre musical"
+          },
+          "customGenre": {
+            "label": "Précisez le genre musical",
+            "placeholder": "Ex: K-Pop, Reggae..."
+          },
+          "voiceGender": {
+            "label": "Voix souhaitée",
+            "hint": "Nous vous conseillons de choisir la voix qui touchera le plus le cœur de votre destinataire."
+          }
+        }
+      },
+      "qualities": {
+        "title": "Qu'est-ce qui le/la rend unique ?",
+        "subtitle": "Parlez-nous de son tempérament et de ce que vous appréciez le plus chez lui/elle.",
+        "fields": {
+          "beautifulQualities": {
+            "label": "Ses plus belles qualités",
+            "placeholder": "Est-il/elle attentionné(e), drôle, protecteur/protectrice, encourageant(e)... ? Qu'est-ce qui en fait une personne exceptionnelle à vos yeux ?"
+          }
+        }
+      },
+      "memories": {
+        "title": "Partagez vos plus beaux souvenirs",
+        "subtitle": "Quel est le moment que vous avez passé ensemble et qui vous est le plus cher ?",
+        "fields": {
+          "specialMoments": {
+            "label": "Événements marquants et souvenirs communs",
+            "placeholder": "Racontez-nous votre rencontre, les belles années, vos fous rires, ou tout moment marquant qui rend votre relation unique..."
+          }
+        }
+      },
+      "message": {
+        "title": "Message du cœur",
+        "subtitle": "Dites-nous ce que vous aimeriez faire passer dans la chanson, et nous ferons de notre mieux pour le transcrire en musique !",
+        "fields": {
+          "specialMessage": {
+            "label": "Message personnel",
+            "placeholder": "Que voulez-vous qu'il/elle sache, ressente ou garde en mémoire pour toujours ?"
+          }
+        }
+      },
+      "checkout": {
+        "title": "Dernière étape ! Finalisez votre commande",
+        "subtitle": "Plus qu'un clic pour créer une magnifique chanson pour {name}.",
+        "fields": {
+          "selectedOffer": {
+            "label": "Choisissez votre formule"
+          },
+          "songLanguage": {
+            "label": "Langue de la chanson"
+          },
+          "email": {
+            "label": "Votre adresse e-mail",
+            "placeholder": "votre@email.com"
+          },
+          "phone": {
+            "label": "Votre numéro de téléphone",
+            "placeholder": "Entrez votre numéro"
+          }
+        }
+      }
+    },
+    "wizard": {
+      "back": "Accueil",
+      "errorRequired": "Veuillez répondre à toutes les questions avant de continuer.",
+      "errorSubmit": "Une erreur est survenue lors de la création de la commande.",
+      "errorGeneric": "Impossible d'enregistrer vos réponses. Veuillez réessayer."
+    }
+  },
+  "Checkout": {
+    "empty": {
+      "title": "Aucune commande spécifiée",
+      "desc": "Veuillez remplir le questionnaire pour créer une commande.",
+      "btn": "Commencer le quiz"
+    },
+    "notFound": {
+      "title": "Commande introuvable",
+      "desc": "La commande avec l'identifiant {orderId} n'a pas été trouvée.",
+      "btn": "Retourner au quiz"
+    },
+    "header": {
+      "kicker": "Dernière étape",
+      "title": "Vérifiez et payez votre commande",
+      "ref": "Référence commande :"
+    },
+    "style": {
+      "title": "Style & Préférences",
+      "recipient": "Destinataire",
+      "genre": "Genre Musical",
+      "voice": "Voix souhaitée",
+      "language": "Langue des paroles"
+    },
+    "story": {
+      "title": "Les éléments de votre histoire",
+      "qualities": "Ses plus belles qualités",
+      "memories": "Souvenirs marquants et anecdotes",
+      "message": "Message du cœur à inclure"
+    },
+    "contact": {
+      "title": "Informations de livraison",
+      "email": "Adresse e-mail",
+      "phone": "Téléphone"
+    },
+    "receipt": {
+      "title": "Détails de la commande",
+      "creation": "Création de chanson originale",
+      "express": "Formule Express",
+      "standard": "Formule Standard",
+      "included": "Inclus",
+      "writing": "Écriture + Enregistrement studio",
+      "delivery": "Livraison MP3 haute qualité",
+      "total": "Total"
+    },
+    "guarantees": {
+      "expressDelivery": "Livraison sous 48 heures",
+      "standardDelivery": "Livraison sous 5 jours",
+      "deliveryDesc": "Votre chanson est livrée directement par e-mail au format MP3 avec ses paroles imprimables.",
+      "emotionTitle": "Garantie 100% émotion",
+      "emotionDesc": "Nos compositeurs mettent tout leur cœur à donner vie à vos plus beaux souvenirs."
+    },
+    "whatsappMsg": "Bonjour Mosiqti, je souhaite valider ma commande.\nRéférence : {orderId}\nMontant : {amount} dhs",
+    "whatsappBtn": "Commander via WhatsApp",
+    "whatsappGuarantee": "Paiement direct et sécurisé via WhatsApp",
+    "whatsappEdit": "Possibilité de modifier les informations dans les 72h",
+    "promoCode": {
+      "label": "Code promo",
+      "placeholder": "Ex: VIBEZ30",
+      "apply": "Appliquer",
+      "invalid": "Code invalide ou expiré",
+      "success": "Code promo appliqué !",
+      "discount": "Réduction",
+      "remove": "Retirer"
+    }
+  },
+  "Success": {
+    "empty": {
+      "title": "Aucune commande spécifiée",
+      "desc": "Impossible d'afficher le reçu sans référence de commande.",
+      "btn": "Retour à l'accueil"
+    },
+    "notFound": {
+      "title": "Commande introuvable",
+      "desc": "La commande avec la référence {orderId} est introuvable.",
+      "btn": "Retour à l'accueil"
+    },
+    "header": {
+      "kicker": "Paiement Réussi",
+      "title": "Merci pour votre confiance !",
+      "desc": "La création de votre chanson personnalisée pour {name} a officiellement commencé.",
+      "badge": "Commande payée et validée"
+    },
+    "details": {
+      "title": "Détails de la chanson",
+      "recipient": "Destinataire :",
+      "genre": "Genre musical :",
+      "voice": "Type de Voix :",
+      "language": "Langue :",
+      "email": "E-mail de livraison :"
+    },
+    "steps": {
+      "title": "Que se passe-t-il maintenant ?",
+      "step1Title": "Étape 1 : Écriture des paroles",
+      "step1Desc": "Un auteur étudie vos souvenirs et vos blagues privées pour concevoir des paroles sur mesure fidèles à votre relation.",
+      "step2Title": "Étape 2 : Enregistrement en studio",
+      "step2Desc": "Nos artistes entrent en studio pour enregistrer les voix et instruments dans le style {genre}.",
+      "step3Title": "Étape 3 : Livraison de la chanson",
+      "step3Desc": "{delay}, vous recevrez un lien de téléchargement privé par e-mail ({email}) pour récupérer votre fichier MP3 haute qualité et les paroles.",
+      "expressDelay": "Sous 48 heures maximum",
+      "standardDelay": "Sous 5 jours maximum"
+    },
+    "btn": "Retour à l'accueil"
+  },
+  "Track": {
+    "notFound": {
+      "title": "Introuvable",
+      "desc": "Nous n'avons pas trouvé de commande avec cette référence ou cet e-mail.",
+      "btn": "Réessayer"
+    },
+    "header": {
+      "kicker": "Suivi de commande",
+      "title": "Détails de votre commande",
+      "ref": "Référence :"
+    },
+    "status": {
+      "paid": "✅ Paiement reçu – votre chanson est en cours de finalisation.",
+      "pending": "⏳ En attente de paiement."
+    }
+  }
+}
