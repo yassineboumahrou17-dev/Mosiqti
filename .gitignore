@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Media files (too large for GitHub HTTPS)
+public/*.mp4
+public/audio-previews/*.mp3
