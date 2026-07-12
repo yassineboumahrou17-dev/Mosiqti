@@ -188,3 +188,104 @@ export async function markOrderAsPaidInSheet(orderId: string): Promise<boolean> 
     return false;
   }
 }
+
+export async function getPendingOrdersForRelance(): Promise<Order[]> {
+  noStore();
+  try {
+    const client = getSheetsClient();
+    if (!client) return [];
+    const { sheets, sheetId } = client;
+
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId: sheetId,
+      range: "A:Q", // include column Q for relanceSent
+    });
+
+    const rows = response.data.values;
+    if (!rows) return [];
+
+    const pendingOrders: Order[] = [];
+    const now = new Date().getTime();
+
+    for (let i = 1; i < rows.length; i++) { // Skip header if present, or just process all rows
+      const row = rows[i];
+      if (!row || !row[0]) continue;
+
+      const status = row[3];
+      const relanceSent = row[16]; // Column Q
+      const createdAtStr = row[1];
+
+      if (status === "pending" && relanceSent !== "oui") {
+        const createdAt = new Date(createdAtStr).getTime();
+        const diffHours = (now - createdAt) / (1000 * 60 * 60);
+
+        // Relance if between 1 hour and 24 hours old
+        if (diffHours >= 1 && diffHours <= 24) {
+          const genreField = row[7] || "";
+          const genre = genreField.startsWith("Autre: ") ? "autre" : genreField;
+          const customGenre = genreField.startsWith("Autre: ") ? genreField.replace("Autre: ", "") : "";
+
+          pendingOrders.push({
+            id: row[0],
+            createdAt: row[1],
+            amount: Number(row[2]),
+            status: "pending",
+            answers: {
+              selectedOffer: row[4] as any,
+              recipientName: row[5],
+              recipientType: row[6],
+              genre,
+              customGenre,
+              voiceGender: row[8],
+              songLanguage: row[9],
+              beautifulQualities: row[10],
+              specialMoments: row[11],
+              specialMessage: row[12],
+              email: row[13],
+              phoneNumber: row[14] || "",
+              phoneCountryCode: "",
+            },
+            paymentMethod: row[15] as any,
+          });
+        }
+      }
+    }
+
+    return pendingOrders;
+  } catch (error) {
+    console.error("Failed to get pending orders for relance:", error);
+    return [];
+  }
+}
+
+export async function markOrderAsRelanceSent(orderId: string): Promise<boolean> {
+  noStore();
+  try {
+    const client = getSheetsClient();
+    if (!client) return false;
+    const { sheets, sheetId } = client;
+
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId: sheetId,
+      range: "A:A",
+    });
+
+    const rows = response.data.values;
+    if (!rows) return false;
+
+    const rowIndex = rows.findIndex(r => r[0] === orderId);
+    if (rowIndex === -1) return false;
+
+    await sheets.spreadsheets.values.update({
+      spreadsheetId: sheetId,
+      range: `Q${rowIndex + 1}`,
+      valueInputOption: "USER_ENTERED",
+      requestBody: { values: [["oui"]] },
+    });
+
+    return true;
+  } catch (error) {
+    console.error("Failed to mark relance as sent in Google Sheets:", error);
+    return false;
+  }
+}
