@@ -4,7 +4,9 @@ import { type Order } from "./orders";
 
 function getSheetsClient() {
   const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
-  const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n");
+  const rawKey = process.env.GOOGLE_PRIVATE_KEY;
+  const cleanedKey = rawKey ? rawKey.replace(/^"|"$/g, '') : undefined;
+  const privateKey = cleanedKey?.replace(/\\n/g, "\n");
   const sheetId = process.env.GOOGLE_SHEET_ID || "10rRkZZM50hGb_u9pixFtyYVSbKYdnbGSoff4aegJpQU";
 
   if (!clientEmail || !privateKey || !sheetId) {
@@ -32,7 +34,8 @@ export async function appendOrderToSheet(order: Order) {
     }
     const { sheets, sheetId } = client;
 
-    const phone = `${order.answers.phoneCountryCode || ""} ${order.answers.phoneNumber || ""}`.trim();
+    const rawPhone = `${order.answers.phoneCountryCode || ""} ${order.answers.phoneNumber || ""}`.trim();
+    const phone = rawPhone ? `'${rawPhone}` : "";
 
     const row = [
       order.id,
