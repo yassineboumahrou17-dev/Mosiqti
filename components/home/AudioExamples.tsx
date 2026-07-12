@@ -1,7 +1,7 @@
 "use client";
 
 import { Section, SectionHeader } from "@/components/ui/Section";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 
 interface AudioTrack {
@@ -113,8 +113,6 @@ function AudioCard({ track }: { track: AudioTrack }) {
     </div>
   );
 }
-
-import { useState, useEffect } from "react";
 
 function CustomAudioPlayer({ src, startTime, endTime }: { src: string, startTime: number, endTime: number }) {
   const [isPlaying, setIsPlaying] = useState(false);
