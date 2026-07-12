@@ -117,3 +117,71 @@ export async function sendPaymentConfirmationNotification(orderId: string) {
     }
   }
 }
+
+export async function sendAbandonedCartNotification(orderId: string) {
+  const order = await getOrderById(orderId);
+  
+  if (!order) {
+    console.error(`[Notifications] Commande ${orderId} introuvable pour la relance.`);
+    return;
+  }
+
+  const checkoutUrl = `https://mosiqti.com/checkout?orderId=${orderId}`;
+
+  // 1. ENVOI E-MAIL AVEC RESEND
+  if (order.answers.email && process.env.RESEND_API_KEY) {
+    console.log(`[E-Mail] Envoi de la relance à ${order.answers.email}...`);
+    try {
+      await getResendClient()?.emails.send({
+        from: "Mosiqti <contact@mosiqti.com>", // À remplacer par votre domaine vérifié sur Resend
+        to: order.answers.email,
+        subject: "🎵 N'oubliez pas votre chanson sur-mesure !",
+        html: `
+          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; line-height: 1.5;">
+            <h2 style="color: #333;">Mosiqti</h2>
+            <p>Bonjour,</p>
+            <p>Vous avez commencé à créer une chanson personnalisée pour <strong>${order.answers.recipientName || "votre proche"}</strong>, mais vous n'avez pas encore finalisé votre commande.</p>
+            <p>Toutes vos informations sont sauvegardées ! Il ne vous reste plus qu'une étape pour que nos artistes se mettent au travail.</p>
+            <br>
+            <a href="${checkoutUrl}" style="display: inline-block; background-color: #000; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">Finaliser ma commande</a>
+            <p style="margin-top: 30px; font-size: 12px; color: #666;">
+              Si le bouton ne fonctionne pas, copiez ce lien : <br>
+              ${checkoutUrl}
+            </p>
+          </div>
+        `,
+      });
+      console.log(`[E-Mail] E-mail de relance envoyé avec succès.`);
+    } catch (error) {
+      console.error(`[E-Mail] Erreur lors de l'envoi de la relance :`, error);
+    }
+  }
+
+  // 2. ENVOI WHATSAPP AVEC TWILIO
+  if (
+    order.answers.phoneNumber &&
+    process.env.TWILIO_ACCOUNT_SID &&
+    process.env.TWILIO_AUTH_TOKEN &&
+    process.env.TWILIO_WHATSAPP_NUMBER
+  ) {
+    const rawPhone = order.answers.phoneNumber.replace(/^0+/, "");
+    const formattedPhone = `whatsapp:${order.answers.phoneCountryCode}${rawPhone}`;
+    
+    console.log(`[WhatsApp] Envoi de la relance WhatsApp au ${formattedPhone}...`);
+    try {
+      const twilioClient = getTwilioClient();
+      if (twilioClient) {
+        await twilioClient.messages.create({
+          from: process.env.TWILIO_WHATSAPP_NUMBER,
+          to: formattedPhone,
+          body: `🎵 *Mosiqti* - Bonjour ! \n\nVous avez commencé à créer une chanson pour ${order.answers.recipientName || "votre proche"}, mais vous n'avez pas encore finalisé votre commande.\n\nToutes vos informations sont sauvegardées ! Finalisez votre commande ici : \n${checkoutUrl}`,
+        });
+        console.log(`[WhatsApp] Relance WhatsApp envoyée avec succès.`);
+      } else {
+        console.log(`[WhatsApp] Client Twilio non configuré.`);
+      }
+    } catch (error) {
+      console.error(`[WhatsApp] Erreur lors de l'envoi de la relance :`, error);
+    }
+  }
+}
