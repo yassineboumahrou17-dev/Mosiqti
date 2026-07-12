@@ -15,7 +15,7 @@ export default async function TrackPage({ searchParams }: { searchParams: Promis
     return <TrackForm />;
   }
 
-  const order = getOrderById(orderId);
+  const order = await getOrderById(orderId);
   if (!order || order.answers.email.toLowerCase() !== email.toLowerCase().trim()) {
     return (
       <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center bg-[#fff8f5] px-4 py-12">

@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/routing";
-import { markOrderAsPaid } from "@/lib/orders";
+import { getOrderById, markOrderAsPaid } from "@/lib/orders";
 import { getOptionLabel } from "@/lib/quiz";
 import { getTranslations } from "next-intl/server";
 
@@ -36,8 +36,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
     );
   }
 
-  // Marquer immédiatement la commande comme payée dans la base locale (démo ou redirection réussie)
-  const order = markOrderAsPaid(orderId);
+  const order = await getOrderById(orderId);
 
   if (!order) {
     return (
@@ -59,6 +58,15 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
     );
   }
 
+  let isPaid = order.status === "paid";
+  
+  // Pour la simulation UPay, on marque comme payé si on arrive ici
+  // (Dans la vraie vie, c'est le webhook UPay qui fera ça)
+  if (!isPaid && order.paymentMethod === "upay") {
+    await markOrderAsPaid(orderId);
+    isPaid = true;
+  }
+
   const { answers } = order;
 
   return (
@@ -75,18 +83,21 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
           </div>
 
           <p className="text-xs font-bold uppercase tracking-widest text-accent-mint">
-            {t('header.kicker')}
+            {isPaid ? t('header.kicker') : "Commande enregistrée"}
           </p>
           <h1 className="mt-3 font-display text-3xl font-bold text-foreground md:text-4xl">
-            {t('header.title')}
+            {isPaid ? t('header.title') : "En attente de paiement"}
           </h1>
           <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-relaxed text-muted">
-            {t.rich('header.desc', { name: answers.recipientName, strong: (chunks) => <strong className="text-foreground">{chunks}</strong> })}
+            {isPaid 
+              ? t.rich('header.desc', { name: answers.recipientName, strong: (chunks) => <strong className="text-foreground">{chunks}</strong> })
+              : `Votre commande pour ${answers.recipientName} a bien été enregistrée. Veuillez procéder au paiement par ${order.paymentMethod === 'bankTransfer' ? 'virement bancaire' : 'Cashplus'} pour lancer la création.`
+            }
           </p>
 
           {/* Badge statut */}
-          <div className="mt-6 inline-flex items-center gap-1.5 rounded-full bg-accent-mint/10 px-4 py-1.5 text-xs font-bold text-accent-mint">
-            <span>✓</span> {t('header.badge')}
+          <div className={`mt-6 inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold ${isPaid ? 'bg-accent-mint/10 text-accent-mint' : 'bg-accent-yellow/10 text-accent-yellow'}`}>
+            <span>{isPaid ? '✓' : '⏳'}</span> {isPaid ? t('header.badge') : "En attente de réception du paiement"}
           </div>
 
           {/* Récapitulatif technique */}

@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const order = getOrderById(orderId);
+    const order = await getOrderById(orderId);
     if (!order) {
       return Response.json(
         { error: "Commande non trouvée." },

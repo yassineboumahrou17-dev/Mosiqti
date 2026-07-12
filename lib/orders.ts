@@ -1,7 +1,5 @@
-import fs from "fs";
-import path from "path";
 import { PRICE_STANDARD, PRICE_EXPRESS, type QuizAnswers } from "@/data/quizData";
-import { appendOrderToSheet } from "./googleSheets";
+import { appendOrderToSheet, getOrderFromSheet, markOrderAsPaidInSheet } from "./googleSheets";
 
 export interface Order {
   id: string;
@@ -9,44 +7,13 @@ export interface Order {
   status: "pending" | "paid";
   amount: number;
   createdAt: string;
+  previewStatus?: "none" | "generating" | "ready" | "failed";
+  previewAudioUrl?: string;
+  hasListenedToPreview?: boolean;
+  paymentMethod?: "upay" | "bankTransfer" | "cashplus" | string;
 }
 
-const ORDERS_FILE_PATH = path.join(process.cwd(), "data", "orders.json");
-
-// Helper to ensure the directory exists and read the file
-function getOrders(): Record<string, Order> {
-  try {
-    const dirPath = path.dirname(ORDERS_FILE_PATH);
-    if (!fs.existsSync(dirPath)) {
-      fs.mkdirSync(dirPath, { recursive: true });
-    }
-
-    if (!fs.existsSync(ORDERS_FILE_PATH)) {
-      fs.writeFileSync(ORDERS_FILE_PATH, JSON.stringify({}, null, 2), "utf-8");
-      return {};
-    }
-
-    const data = fs.readFileSync(ORDERS_FILE_PATH, "utf-8");
-    return JSON.parse(data || "{}");
-  } catch (error) {
-    console.error("Failed to read orders file:", error);
-    return {};
-  }
-}
-
-// Helper to write to file
-function saveOrders(orders: Record<string, Order>): boolean {
-  try {
-    fs.writeFileSync(ORDERS_FILE_PATH, JSON.stringify(orders, null, 2), "utf-8");
-    return true;
-  } catch (error) {
-    console.error("Failed to save orders file:", error);
-    return false;
-  }
-}
-
-export function createOrder(answers: QuizAnswers): Order {
-  const orders = getOrders();
+export async function createOrder(answers: QuizAnswers): Promise<Order> {
   const orderId = `ord_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
   
   const amount = answers.selectedOffer === "express" ? PRICE_EXPRESS : PRICE_STANDARD;
@@ -57,33 +24,39 @@ export function createOrder(answers: QuizAnswers): Order {
     status: "pending",
     amount,
     createdAt: new Date().toISOString(),
+    previewStatus: "none",
+    hasListenedToPreview: false,
   };
 
-  orders[orderId] = newOrder;
-  saveOrders(orders);
+  // Send to Google Sheets and await it so the serverless function doesn't kill it
+  await appendOrderToSheet(newOrder).catch(console.error);
+  
   return newOrder;
 }
 
-export function getOrderById(id: string): Order | undefined {
-  const orders = getOrders();
-  return orders[id];
+export async function getOrderById(id: string): Promise<Order | undefined> {
+  return await getOrderFromSheet(id);
 }
 
-export function markOrderAsPaid(id: string): Order | undefined {
-  const orders = getOrders();
-  const order = orders[id];
-  
-  if (order) {
-    if (order.status !== "paid") {
-      order.status = "paid";
-      orders[id] = order;
-      saveOrders(orders);
-      
-      // Envoyer à Google Sheets uniquement une fois payé
-      appendOrderToSheet(order).catch(console.error);
-    }
-    return order;
+export async function updateOrder(id: string, updates: Partial<Order>): Promise<Order | undefined> {
+  // Not fully supported in Google Sheets DB approach yet.
+  console.warn("updateOrder is not fully implemented for Google Sheets");
+  return undefined;
+}
+
+export async function markOrderAsPaid(id: string): Promise<Order | undefined> {
+  const success = await markOrderAsPaidInSheet(id);
+  if (success) {
+    return await getOrderFromSheet(id);
   }
-  
+  return undefined;
+}
+
+export async function updateOrderPaymentMethod(id: string, method: string): Promise<Order | undefined> {
+  const { updateOrderPaymentMethodInSheet } = await import("./googleSheets");
+  const success = await updateOrderPaymentMethodInSheet(id, method);
+  if (success) {
+    return await getOrderFromSheet(id);
+  }
   return undefined;
 }

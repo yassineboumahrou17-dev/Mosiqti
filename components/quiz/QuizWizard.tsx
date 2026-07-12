@@ -3,7 +3,8 @@
 import { useCallback, useEffect, useState, useRef } from "react";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 import { QuizPageContent } from "@/components/quiz/QuizPageContent";
 import { QuizProgress } from "@/components/quiz/QuizProgress";
 import {
@@ -90,7 +91,8 @@ export function QuizWizard() {
           throw new Error(data.error || t('wizard.errorSubmit'));
         }
 
-        router.push(`/checkout?orderId=${data.orderId}`);
+        // Force a hard navigation to bypass any client-side router caching issues
+        window.location.href = `/checkout?orderId=${data.orderId}`;
       } catch (err) {
         console.error("Order submission failed:", err);
         const errMsg = err instanceof Error && err.message !== t('wizard.errorSubmit') ? err.message : t('wizard.errorGeneric');

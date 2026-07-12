@@ -53,7 +53,8 @@ export default async function RootLayout({
   }
 
   const messages = await getMessages();
-  const dir = locale === 'ar' ? 'rtl' : 'ltr';
+  const isRtl = locale === 'ar' || locale === 'ma';
+  const dir = isRtl ? 'rtl' : 'ltr';
 
   return (
     <html
@@ -61,7 +62,7 @@ export default async function RootLayout({
       dir={dir}
       className={`${fraunces.variable} ${plusJakarta.variable} ${caveat.variable} ${cairo.variable} h-full antialiased`}
     >
-      <body className={`min-h-full flex flex-col bg-background text-foreground ${locale === 'ar' ? 'font-cairo' : 'font-sans'}`}>
+      <body className={`min-h-full flex flex-col bg-background text-foreground ${isRtl ? 'font-cairo' : 'font-sans'}`}>
         <NextIntlClientProvider messages={messages}>
           <PromoBanner />
           <Header />

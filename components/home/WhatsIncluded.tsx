@@ -93,7 +93,7 @@ export function WhatsIncluded() {
             <h3 className="font-display text-2xl font-bold text-foreground">{t('expressTitle')}</h3>
             <p className="mt-2 text-xs font-semibold text-muted">{t('expressSubtitle')}</p>
             <div className="mt-6 flex items-baseline gap-1">
-              <span className="font-display text-4xl font-bold text-foreground">290</span>
+              <span className="font-display text-4xl font-bold text-foreground">280</span>
               <span className="text-lg font-bold text-muted">{t('currency')}</span>
             </div>
             <ul className="mt-6 space-y-3 text-sm font-medium text-muted">

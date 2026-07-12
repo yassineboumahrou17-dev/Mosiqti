@@ -5,7 +5,8 @@
     "included": "Ce qui est inclus",
     "faq": "FAQ",
     "trackOrder": "Suivre ma commande",
-    "createSong": "Créer ma chanson"
+    "createSong": "Créer ma chanson",
+    "examples": "Exemples Audio"
   },
   "PromoBanner": {
     "text": "🎁 OFFRE DE LANCEMENT — −30% sur votre première chanson !"
@@ -83,7 +84,7 @@
     "step1Title": "Racontez-nous votre histoire",
     "step1Desc": "Répondez à quelques questions : pour qui, quel style musical, et vos plus beaux souvenirs ensemble.",
     "step2Title": "Écriture et enregistrement",
-    "step2Desc": "Un auteur écrit les paroles personnalisées, et nos musiciens l'enregistrent en studio. La magie opère !",
+    "step2Desc": "On produit les paroles à partir de vos réponses et on crée votre musique personnalisée.",
     "step3Title": "Recevez votre chanson",
     "step3Desc": "Nous vous envoyons un lien privé par e-mail. Écoutez, partagez et préparez les mouchoirs de joie."
   },
@@ -105,7 +106,7 @@
     "moreQuestions": "Vous avez d'autres questions ? Envoyez-nous un e-mail à"
   },
   "SocialProof": {
-    "b1": "Prête en 7 jours",
+    "b1": "Prête en 48h",
     "b2": "Sans frais de port (par e-mail)",
     "b3": "Anniversaires · Mariages · Souvenirs",
     "b4": "Juste pour faire plaisir"
@@ -189,7 +190,7 @@
       },
       "offer": {
         "standard": "Formule Standard (190 dhs — Rendu en 5 jours)",
-        "express": "Formule Express (290 dhs — Rendu en 48h)"
+        "express": "Formule Express (280 dhs — Rendu en 48h)"
       }
     },
     "pages": {
@@ -332,10 +333,32 @@
       "emotionTitle": "Garantie 100% émotion",
       "emotionDesc": "Nos compositeurs mettent tout leur cœur à donner vie à vos plus beaux souvenirs."
     },
-    "whatsappMsg": "Bonjour Mosiqti, je souhaite valider ma commande.\nRéférence : {orderId}\nMontant : {amount} dhs",
-    "whatsappBtn": "Commander via WhatsApp",
-    "whatsappGuarantee": "Paiement direct et sécurisé via WhatsApp",
-    "whatsappEdit": "Possibilité de modifier les informations dans les 72h",
+    "payment": {
+      "title": "Choisissez votre mode de paiement",
+      "methods": {
+        "bankTransfer": "Virement Bancaire",
+        "upay": "Carte Bancaire",
+        "cashplus": "Cashplus"
+      },
+      "bankTransfer": {
+        "desc": "Effectuez le virement sur le compte ci-dessous :",
+        "bank": "Banque : [NOM_DE_LA_BANQUE]",
+        "rib": "RIB : [VOTRE_RIB_ICI]",
+        "owner": "Titulaire : [NOM_DU_TITULAIRE]",
+        "instructions": "Veuillez indiquer la référence ({orderId}) dans le motif du virement.",
+        "confirmBtn": "J'ai effectué le virement"
+      },
+      "upay": {
+        "desc": "Payez en toute sécurité par carte bancaire via U Pay.",
+        "btn": "Payer par carte"
+      },
+      "cashplus": {
+        "desc": "Rendez-vous dans l'agence Cashplus la plus proche.",
+        "code": "Code : [CODE_CASHPLUS]",
+        "instructions": "Présentez ce code et votre référence ({orderId}) à l'agent.",
+        "confirmBtn": "J'ai payé via Cashplus"
+      }
+    },
     "promoCode": {
       "label": "Code promo",
       "placeholder": "Ex: VIBEZ30",

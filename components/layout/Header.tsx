@@ -9,6 +9,7 @@ export function Header() {
   const navLinks = [
     { href: "/#comment-ca-marche", label: t('howItWorks') },
     { href: "/#pour-qui", label: t('forWhom') },
+    { href: "/#examples", label: t('examples') },
     { href: "/#inclus", label: t('included') },
     { href: "/#faq", label: t('faq') },
   ];

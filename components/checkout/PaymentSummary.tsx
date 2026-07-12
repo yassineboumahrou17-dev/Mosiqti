@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { CheckoutButton } from "./CheckoutButton";
+import { PaymentMethods } from "./PaymentMethods";
 import { getPromoCode, calculateDiscount, PromoCode } from "@/lib/promoCodes";
 
 interface PaymentSummaryProps {
@@ -111,12 +111,10 @@ export function PaymentSummary({ orderId, baseAmount, selectedOffer }: PaymentSu
         </div>
       )}
 
-      {/* Bouton de paiement Stripe / WhatsApp */}
-      <div className="mt-6">
-        <CheckoutButton 
+      <div className="mt-6 border-t border-border pt-6">
+        <PaymentMethods 
           orderId={orderId} 
           amount={totalAmount} 
-          promoCode={activePromo?.code} 
         />
       </div>
 

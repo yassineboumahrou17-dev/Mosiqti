@@ -1,5 +1,6 @@
 import { type NextRequest } from "next/server";
 import { createOrder } from "@/lib/orders";
+import { generateSunoPreview } from "@/lib/suno";
 
 export async function POST(request: NextRequest) {
   try {
@@ -27,7 +28,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const order = createOrder(answers);
+    const order = await createOrder(answers);
+    
+    // Déclencher la génération en arrière-plan sans bloquer la requête (Fire & Forget)
+    generateSunoPreview(order.id, answers).catch(console.error);
 
     return Response.json({ orderId: order.id });
   } catch (error) {

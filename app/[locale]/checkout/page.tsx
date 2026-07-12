@@ -8,8 +8,12 @@ interface CheckoutPageProps {
   searchParams: Promise<{ orderId?: string }>;
 }
 
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+
 export default async function CheckoutPage({ searchParams }: CheckoutPageProps) {
   const { orderId } = await searchParams;
+  console.log("[CheckoutPage] Requested orderId:", orderId);
   const t = await getTranslations('Checkout');
   const tQuiz = await getTranslations('Quiz');
 
@@ -33,7 +37,7 @@ export default async function CheckoutPage({ searchParams }: CheckoutPageProps) 
     );
   }
 
-  const order = getOrderById(orderId);
+  const order = await getOrderById(orderId);
 
   if (!order) {
     return (

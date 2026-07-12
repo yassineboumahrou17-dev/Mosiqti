@@ -60,10 +60,10 @@ export function FAQ() {
       <p className="mx-auto mt-12 max-w-md text-center text-sm font-medium text-muted">
         {t('moreQuestions')}{" "}
         <a
-          href="mailto:hello@Mosiqti.com"
+          href="mailto:contact@mosiqti.com"
           className="font-bold text-primary hover:underline"
         >
-          hello@Mosiqti.com
+          contact@mosiqti.com
         </a>
       </p>
     </Section>

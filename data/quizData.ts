@@ -320,4 +320,4 @@ export const getQuizPages = (t: any): QuizPage[] => [
 // ─── Tarification ────────────────────────────────────────────────────────────
 
 export const PRICE_STANDARD = 190;
-export const PRICE_EXPRESS = 290;
+export const PRICE_EXPRESS = 280;

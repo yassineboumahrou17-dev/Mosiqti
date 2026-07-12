@@ -1,5 +1,6 @@
 import { type NextRequest } from "next/server";
 import { markOrderAsPaid } from "@/lib/orders";
+import { sendPaymentConfirmationNotification } from "@/lib/notifications";
 import Stripe from "stripe";
 
 export async function POST(request: NextRequest) {
@@ -44,6 +45,8 @@ export async function POST(request: NextRequest) {
     if (orderId) {
       console.log(`Paiement Stripe reçu pour la commande : ${orderId}`);
       markOrderAsPaid(orderId);
+      // Envoi de l'email de confirmation d'achat
+      await sendPaymentConfirmationNotification(orderId);
     } else {
       console.error("Aucun orderId trouvé dans les métadonnées de la session Stripe.");
     }
