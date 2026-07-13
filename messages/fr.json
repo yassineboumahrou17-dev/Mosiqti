@@ -42,7 +42,7 @@
     "standardTitle": "Formule Standard",
     "standardSubtitle": "Le cadeau parfait, sans se presser",
     "currency": "dhs",
-    "standardItem1": "Rendu sous 5 jours",
+    "standardItem1": "Rendu sous 72 heures",
     "standardItem2": "Paroles 100% sur mesure",
     "standardItem3": "Enregistrement studio pro",
     "standardItem4": "Format MP3 haute qualité",
@@ -50,7 +50,7 @@
     "popular": "Populaire",
     "expressTitle": "Formule Express",
     "expressSubtitle": "Pour les occasions de dernière minute",
-    "expressItem1": "Rendu rapide sous 48h",
+    "expressItem1": "Rendu rapide sous 24h",
     "expressItem2": "Paroles 100% sur mesure",
     "expressItem3": "Enregistrement studio pro",
     "expressItem4": "Format MP3 haute qualité",
@@ -106,7 +106,7 @@
     "moreQuestions": "Vous avez d'autres questions ? Envoyez-nous un e-mail à"
   },
   "SocialProof": {
-    "b1": "Prête en 48h",
+    "b1": "Prête en 24h",
     "b2": "Sans frais de port (par e-mail)",
     "b3": "Anniversaires · Mariages · Souvenirs",
     "b4": "Juste pour faire plaisir"
@@ -189,8 +189,8 @@
         "spanish": "Espagnol"
       },
       "offer": {
-        "standard": "Formule Standard (190 dhs — Rendu en 5 jours)",
-        "express": "Formule Express (280 dhs — Rendu en 48h)"
+        "standard": "Formule Standard (190 dhs — Rendu en 72 heures)",
+        "express": "Formule Express (280 dhs — Rendu en 24h)"
       }
     },
     "pages": {
@@ -327,8 +327,8 @@
       "total": "Total"
     },
     "guarantees": {
-      "expressDelivery": "Livraison sous 48 heures",
-      "standardDelivery": "Livraison sous 5 jours",
+      "expressDelivery": "Livraison sous 24 heures",
+      "standardDelivery": "Livraison sous 72 heures",
       "deliveryDesc": "Votre chanson est livrée directement par e-mail au format MP3 avec ses paroles imprimables.",
       "emotionTitle": "Garantie 100% émotion",
       "emotionDesc": "Nos compositeurs mettent tout leur cœur à donner vie à vos plus beaux souvenirs."
@@ -402,8 +402,8 @@
       "step2Desc": "Nos artistes entrent en studio pour enregistrer les voix et instruments dans le style {genre}.",
       "step3Title": "Étape 3 : Livraison de la chanson",
       "step3Desc": "{delay}, vous recevrez un lien de téléchargement privé par e-mail ({email}) pour récupérer votre fichier MP3 haute qualité et les paroles.",
-      "expressDelay": "Sous 48 heures maximum",
-      "standardDelay": "Sous 5 jours maximum"
+      "expressDelay": "Sous 24 heures maximum",
+      "standardDelay": "Sous 72 heures maximum"
     },
     "btn": "Retour à l'accueil"
   },
