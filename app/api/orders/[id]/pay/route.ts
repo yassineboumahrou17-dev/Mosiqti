@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { getOrderById, updateOrderPaymentMethod } from "@/lib/orders";
+import { sendPaymentConfirmationNotification } from "@/lib/notifications";
 
 export async function POST(
   request: NextRequest,
@@ -28,10 +29,13 @@ export async function POST(
     // Mettre à jour la méthode de paiement dans Google Sheets
     await updateOrderPaymentMethod(id, paymentMethod);
 
+    // Envoyer la notification de confirmation de paiement (email via Resend)
+    await sendPaymentConfirmationNotification(id);
+
     if (paymentMethod === "upay") {
       // Simulation d'une session UPay
       // Dans un cas réel, on appellerait l'API UPay ici pour générer l'URL de paiement
-      const mockPaymentUrl = `/success?orderId=${id}`;
+      const mockPaymentUrl = `/checkout/success?orderId=${id}`;
       return NextResponse.json({ url: mockPaymentUrl });
     }
 

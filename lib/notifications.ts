@@ -96,8 +96,11 @@ export async function sendPaymentConfirmationNotification(orderId: string) {
   if (order.answers.email && process.env.RESEND_API_KEY) {
     console.log(`[E-Mail] Envoi de la confirmation de paiement à ${order.answers.email}...`);
     try {
-      await getResendClient()?.emails.send({
-        from: "Mosiqti <contact@mosiqti.com>", // À remplacer par votre domaine vérifié sur Resend
+      const resendClient = getResendClient();
+      if (!resendClient) return;
+      
+      const { data, error } = await resendClient.emails.send({
+        from: "Mosiqti <contact@mosiqti.com>",
         to: order.answers.email,
         subject: "Confirmation de votre commande Mosiqti 🎵",
         html: `
@@ -111,9 +114,14 @@ export async function sendPaymentConfirmationNotification(orderId: string) {
           </div>
         `,
       });
-      console.log(`[E-Mail] E-mail de confirmation envoyé avec succès.`);
+
+      if (error) {
+        console.error(`[E-Mail] Erreur API Resend :`, error);
+      } else {
+        console.log(`[E-Mail] E-mail de confirmation envoyé avec succès. ID:`, data?.id);
+      }
     } catch (error) {
-      console.error(`[E-Mail] Erreur lors de l'envoi de la confirmation :`, error);
+      console.error(`[E-Mail] Exception lors de l'envoi de la confirmation :`, error);
     }
   }
 }

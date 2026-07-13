@@ -35,10 +35,10 @@ export function PaymentMethods({ orderId, amount }: PaymentMethodsProps) {
         if (data.url) {
           router.push(data.url);
         } else {
-          router.push(`/success?orderId=${orderId}`);
+          router.push(`/checkout/success?orderId=${orderId}`);
         }
       } else {
-        router.push(`/success?orderId=${orderId}`);
+        router.push(`/checkout/success?orderId=${orderId}`);
       }
     } catch (error) {
       console.error(error);
