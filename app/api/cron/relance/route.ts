@@ -21,10 +21,10 @@ export async function GET(request: Request) {
 
     let sentCount = 0;
 
-    for (const order of ordersToRelance) {
+    for (const { order, stage } of ordersToRelance) {
       try {
-        await sendAbandonedCartNotification(order.id);
-        await markOrderAsRelanceSent(order.id);
+        await sendAbandonedCartNotification(order.id, stage);
+        await markOrderAsRelanceSent(order.id, stage);
         sentCount++;
       } catch (e) {
         console.error(`[CRON] Failed to send relance to order ${order.id}:`, e);

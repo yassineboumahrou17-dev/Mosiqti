@@ -189,7 +189,7 @@ export async function markOrderAsPaidInSheet(orderId: string): Promise<boolean> 
   }
 }
 
-export async function getPendingOrdersForRelance(): Promise<Order[]> {
+export async function getPendingOrdersForRelance(): Promise<{ order: Order, stage: number }[]> {
   noStore();
   try {
     const client = getSheetsClient();
@@ -204,10 +204,10 @@ export async function getPendingOrdersForRelance(): Promise<Order[]> {
     const rows = response.data.values;
     if (!rows) return [];
 
-    const pendingOrders: Order[] = [];
+    const pendingOrders: { order: Order, stage: number }[] = [];
     const now = new Date().getTime();
 
-    for (let i = 1; i < rows.length; i++) { // Skip header if present, or just process all rows
+    for (let i = 1; i < rows.length; i++) { // Skip header
       const row = rows[i];
       if (!row || !row[0]) continue;
 
@@ -215,17 +215,27 @@ export async function getPendingOrdersForRelance(): Promise<Order[]> {
       const relanceSent = row[16]; // Column Q
       const createdAtStr = row[1];
 
-      if (status === "pending" && relanceSent !== "oui") {
+      // Ignore legacy "oui" values or completely successful relance
+      if (status === "pending" && relanceSent !== "oui" && relanceSent !== "30") {
         const createdAt = new Date(createdAtStr).getTime();
         const diffHours = (now - createdAt) / (1000 * 60 * 60);
+        const diffDays = Math.floor(diffHours / 24);
 
-        // Relance if between 1 hour and 24 hours old
-        if (diffHours >= 1 && diffHours <= 24) {
+        let targetStage = 0;
+        if (diffDays >= 30) targetStage = 30;
+        else if (diffDays >= 7) targetStage = 7;
+        else if (diffDays >= 2) targetStage = 2;
+        else if (diffDays >= 1 || diffHours >= 1) targetStage = 1; // Send stage 1 after 1 hour (as original logic) or 1 day
+
+        const currentStage = relanceSent ? Number(relanceSent) : 0;
+
+        // If we reached a target stage and we haven't sent it yet
+        if (targetStage > 0 && targetStage > currentStage) {
           const genreField = row[7] || "";
           const genre = genreField.startsWith("Autre: ") ? "autre" : genreField;
           const customGenre = genreField.startsWith("Autre: ") ? genreField.replace("Autre: ", "") : "";
 
-          pendingOrders.push({
+          const order: Order = {
             id: row[0],
             createdAt: row[1],
             amount: Number(row[2]),
@@ -246,7 +256,8 @@ export async function getPendingOrdersForRelance(): Promise<Order[]> {
               phoneCountryCode: "",
             },
             paymentMethod: row[15] as any,
-          });
+          };
+          pendingOrders.push({ order, stage: targetStage });
         }
       }
     }
@@ -258,7 +269,7 @@ export async function getPendingOrdersForRelance(): Promise<Order[]> {
   }
 }
 
-export async function markOrderAsRelanceSent(orderId: string): Promise<boolean> {
+export async function markOrderAsRelanceSent(orderId: string, stage: number): Promise<boolean> {
   noStore();
   try {
     const client = getSheetsClient();
@@ -280,7 +291,7 @@ export async function markOrderAsRelanceSent(orderId: string): Promise<boolean> 
       spreadsheetId: sheetId,
       range: `Q${rowIndex + 1}`,
       valueInputOption: "USER_ENTERED",
-      requestBody: { values: [["oui"]] },
+      requestBody: { values: [[stage.toString()]] },
     });
 
     return true;
