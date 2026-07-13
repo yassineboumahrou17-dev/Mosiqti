@@ -37,13 +37,39 @@ export async function sendPreviewNotifications(orderId: string) {
         to: order.answers.email,
         subject: "Votre chanson personnalisée est presque prête ! 🎵",
         html: `
-          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2>Mosiqti</h2>
-            <p>Bonjour,</p>
-            <p>Nous avons composé un extrait de 30 secondes de la chanson pour <strong>${order.answers.recipientName}</strong> !</p>
-            <p>Écoutez cet extrait gratuit exclusif (écoutable une seule fois) :</p>
-            <a href="${previewLink}" style="display: inline-block; background-color: #3b82f6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">Écouter ma preview</a>
-            <p style="margin-top: 30px; font-size: 12px; color: #666;">Si vous ne parvenez pas à cliquer sur le bouton, copiez ce lien : <br> ${previewLink}</p>
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #FAF7F2; padding: 0;">
+            <div style="text-align: center; padding: 30px 20px;">
+              <h1 style="color: #000; font-size: 28px; margin: 0; font-weight: bold;">Mosiqti</h1>
+            </div>
+            <div style="padding: 0 40px 40px 40px; color: #000; line-height: 1.6; font-size: 16px;">
+              <p>Bonjour,</p>
+              <p style="font-size: 18px;"><strong>L'extrait de la chanson pour ${order.answers.recipientName} est prêt 🎵</strong></p>
+              <p>Vous avez pris le temps de nous partager votre histoire, alors nous avons préparé quelque chose de spécial : <strong>Nous avons créé un court extrait de votre chanson sur-mesure.</strong></p>
+              <p>Cliquez ci-dessous pour l'écouter. Si vous l'adorez, vous pourrez débloquer la version complète juste après.</p>
+              
+              <div style="text-align: center; margin: 40px 0;">
+                <a href="${previewLink}" style="display: inline-block; background-color: #FF7043; color: white; padding: 16px 32px; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 18px;">Écouter mon extrait ici</a>
+              </div>
+
+              <p>Cette chanson a été créée à partir des détails que vous avez partagés, elle est donc déjà façonnée autour de votre histoire, de votre moment et de la personne à qui elle est destinée.</p>
+              
+              <p>Pourquoi nos clients adorent :</p>
+              <ul style="margin-bottom: 30px;">
+                <li style="margin-bottom: 10px;">c'est personnel dès les premières secondes</li>
+                <li style="margin-bottom: 10px;">ça transforme un souvenir en quelque chose que vous pouvez garder pour toujours</li>
+                <li style="margin-bottom: 10px;">ça fait un cadeau inoubliable</li>
+              </ul>
+
+              <p>Si cet extrait vous donne des frissons, la chanson complète n'attend plus que vous.</p>
+
+              <p style="margin-top: 40px;">L'équipe<br>Mosiqti</p>
+
+              <p style="font-size: 14px; color: #555;">P.S. Votre extrait est lié à cet e-mail, vous pouvez donc l'écouter en un seul clic.</p>
+            </div>
+            
+            <div style="background-color: #312E3D; color: white; text-align: center; padding: 30px 20px; font-size: 12px;">
+              <p style="margin: 0;">© ${new Date().getFullYear()} Mosiqti. Tous droits réservés.</p>
+            </div>
           </div>
         `,
       });
