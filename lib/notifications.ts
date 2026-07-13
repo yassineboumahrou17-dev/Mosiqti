@@ -130,13 +130,20 @@ export async function sendPaymentConfirmationNotification(orderId: string) {
         to: order.answers.email,
         subject: "Confirmation de votre commande Mosiqti 🎵",
         html: `
-          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2>Mosiqti</h2>
-            <p>Bonjour,</p>
-            <p>Nous vous confirmons la bonne réception de votre paiement pour la chanson de <strong>${order.answers.recipientName}</strong> !</p>
-            <p>Notre équipe travaille actuellement sur votre commande. Vous serez notifié(e) très prochainement pour écouter un premier extrait.</p>
-            <p>Merci de votre confiance et à très vite !</p>
-            <p style="margin-top: 30px; font-size: 12px; color: #666;">L'équipe Mosiqti</p>
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #FAF7F2; padding: 0;">
+            <div style="text-align: center; padding: 30px 20px;">
+              <h1 style="color: #000; font-size: 28px; margin: 0; font-weight: bold;">Mosiqti</h1>
+            </div>
+            <div style="padding: 0 40px 40px 40px; color: #000; line-height: 1.6; font-size: 16px;">
+              <p>Bonjour,</p>
+              <p style="font-size: 18px;"><strong>Nous vous confirmons la bonne réception de votre paiement pour la chanson de ${order.answers.recipientName} ! 🎵</strong></p>
+              <p>Notre équipe travaille actuellement sur votre commande. Vous serez notifié(e) très prochainement pour écouter un premier extrait.</p>
+              <p>Merci de votre confiance et à très vite !</p>
+              <p style="margin-top: 40px;">L'équipe<br>Mosiqti</p>
+            </div>
+            <div style="background-color: #312E3D; color: white; text-align: center; padding: 30px 20px; font-size: 12px;">
+              <p style="margin: 0;">© ${new Date().getFullYear()} Mosiqti. Tous droits réservés.</p>
+            </div>
           </div>
         `,
       });
@@ -208,17 +215,24 @@ export async function sendAbandonedCartNotification(orderId: string, stage: numb
         to: order.answers.email,
         subject: subject,
         html: `
-          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; line-height: 1.5;">
-            <h2 style="color: #333;">Mosiqti</h2>
-            <p>Bonjour,</p>
-            <p>${p1}</p>
-            <p>${p2}</p>
-            <br>
-            <a href="${checkoutUrl}" style="display: inline-block; background-color: #000; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">Finaliser ma commande</a>
-            <p style="margin-top: 30px; font-size: 12px; color: #666;">
-              Si le bouton ne fonctionne pas, copiez ce lien : <br>
-              ${checkoutUrl}
-            </p>
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #FAF7F2; padding: 0;">
+            <div style="text-align: center; padding: 30px 20px;">
+              <h1 style="color: #000; font-size: 28px; margin: 0; font-weight: bold;">Mosiqti</h1>
+            </div>
+            <div style="padding: 0 40px 40px 40px; color: #000; line-height: 1.6; font-size: 16px;">
+              <p>Bonjour,</p>
+              <p style="font-size: 18px;"><strong>${subject}</strong></p>
+              <p>${p1}</p>
+              <p>${p2}</p>
+              <div style="text-align: center; margin: 40px 0;">
+                <a href="${checkoutUrl}" style="display: inline-block; background-color: #FF7043; color: white; padding: 16px 32px; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 18px;">Finaliser ma commande</a>
+              </div>
+              <p style="margin-top: 40px;">L'équipe<br>Mosiqti</p>
+              <p style="font-size: 14px; color: #555;">Si le bouton ne fonctionne pas, copiez ce lien : <br> ${checkoutUrl}</p>
+            </div>
+            <div style="background-color: #312E3D; color: white; text-align: center; padding: 30px 20px; font-size: 12px;">
+              <p style="margin: 0;">© ${new Date().getFullYear()} Mosiqti. Tous droits réservés.</p>
+            </div>
           </div>
         `,
       });
