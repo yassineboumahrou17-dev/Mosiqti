@@ -192,6 +192,14 @@ export const getQuizPages = (t: any): QuizPage[] => [
         hint: t('pages.basics.fields.name.hint'),
         required: true,
       },
+      {
+        id: "song-language",
+        field: "songLanguage",
+        label: t('pages.checkout.fields.songLanguage.label'),
+        type: "select",
+        options: getLanguageOptions(t),
+        required: true,
+      },
     ],
   },
   {
@@ -287,14 +295,6 @@ export const getQuizPages = (t: any): QuizPage[] => [
         label: t('pages.checkout.fields.selectedOffer.label'),
         type: "radio",
         options: getOfferOptions(t),
-        required: true,
-      },
-      {
-        id: "song-language",
-        field: "songLanguage",
-        label: t('pages.checkout.fields.songLanguage.label'),
-        type: "select",
-        options: getLanguageOptions(t),
         required: true,
       },
       {
