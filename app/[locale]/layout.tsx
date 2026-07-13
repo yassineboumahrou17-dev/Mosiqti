@@ -37,6 +37,9 @@ export const metadata: Metadata = {
   title: "Mosiqti — Chansons personnalisées sur mesure",
   description:
     "Offrez une chanson unique, écrite et enregistrée à partir de votre histoire. Le cadeau le plus personnel pour vos proches.",
+  icons: {
+    icon: '/icon.svg',
+  },
 };
 
 export default async function RootLayout({
