@@ -100,7 +100,7 @@ export function Hero() {
           >
             <video
               ref={videoRef}
-              src="/0623.mp4"
+              src="/0701.mp4"
               playsInline
               className="h-full w-full object-cover"
               onTimeUpdate={handleTimeUpdate}
